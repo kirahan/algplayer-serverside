@@ -15,7 +15,10 @@ async function bootstrap() {
     .build();
   const document = SwaggerModule.createDocument(app, options);
   SwaggerModule.setup('api/cubenode/v1/api-docs', app, document);
-  console.log(`http://localhost:3000/api/cubenode/v1/api-docs`)
-  await app.listen(3000);
+
+  const PORT = process.env.ADMIN_PORT || 3001
+
+  console.log(`http://localhost:${PORT}/api/cubenode/v1/api-docs`)
+  await app.listen(PORT);
 }
 bootstrap();

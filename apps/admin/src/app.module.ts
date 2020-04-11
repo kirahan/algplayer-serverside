@@ -7,10 +7,11 @@ import { PuzzlesModule } from './puzzles/puzzles.module';
 import { PuzzlesetsModule } from './puzzlesets/puzzlesets.module';
 import { CasegroupsModule } from './casegroups/casegroups.module';
 import { AlgcasesModule } from './algcases/algcases.module';
+import { CommonModule } from 'libs/common/src';
 
 @Module({
   imports: [
-    DbModule,
+    CommonModule,
     UsersModule,
     PuzzlesModule,
     PuzzlesetsModule,

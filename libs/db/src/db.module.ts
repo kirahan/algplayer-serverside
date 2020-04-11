@@ -14,14 +14,27 @@ const models = TypegooseModule.forFeature([User,Puzzle,Puzzleset,Casegroup,Algca
 @Global()
 @Module({
   imports : [
-    // db.createUser( {user: "algplayer",pwd: "xiaoye520",roles: [ { role: "readWrite", db: "algplayer" } ]})
-    TypegooseModule.forRoot('mongodb://algplayer:xiaoye520@localhost/algplayer',
-    {
-      useCreateIndex:true,
-      useNewUrlParser:true,
-      useUnifiedTopology:true,
-      useFindAndModify:false
-    }),
+    // db.createUser( {user: "XXX",pwd: "XXX",roles: [ { role: "readWrite", db: "algplayer" } ]})
+    // 使用异步加载，保证先加载configmodule，然后在加载数据库模块
+    TypegooseModule.forRootAsync({
+      useFactory(){
+        return {
+          uri : process.env.DB,
+          useCreateIndex:true,
+          useNewUrlParser:true,
+          useUnifiedTopology:true,
+          useFindAndModify:false
+        }
+      }
+    })
+    // TypegooseModule.forRoot(process.env.DB,
+    // {
+    //   useCreateIndex:true,
+    //   useNewUrlParser:true,
+    //   useUnifiedTopology:true,
+    //   useFindAndModify:false
+    // }
+    ,
     models
   ],
   providers: [DbService],
