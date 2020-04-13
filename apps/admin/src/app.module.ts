@@ -8,6 +8,7 @@ import { PuzzlesetsModule } from './puzzlesets/puzzlesets.module';
 import { CasegroupsModule } from './casegroups/casegroups.module';
 import { AlgcasesModule } from './algcases/algcases.module';
 import { CommonModule } from 'libs/common/src';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -16,7 +17,8 @@ import { CommonModule } from 'libs/common/src';
     PuzzlesModule,
     PuzzlesetsModule,
     CasegroupsModule,
-    AlgcasesModule
+    AlgcasesModule,
+    AuthModule
   ],
   controllers: [AppController],
   providers: [AppService],
