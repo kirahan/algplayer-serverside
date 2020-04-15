@@ -34,6 +34,12 @@
       ],
       "@libs/alioss/*": [
         "libs/alioss/src/*"
+      ],
+      "@libs/alisms": [
+        "libs/alisms/src"
+      ],
+      "@libs/alisms/*": [
+        "libs/alisms/src/*"
       ]
     }
   },

@@ -21,6 +21,7 @@
     "test:e2e": "jest --config ./apps/serve-algplayer/test/jest-e2e.json"
   },
   "dependencies": {
+    "@alicloud/pop-core": "^1.7.9",
     "@nestjs/common": "^7.0.0",
     "@nestjs/config": "^0.4.0",
     "@nestjs/core": "^7.0.0",
@@ -100,7 +101,9 @@
       "@libs/email/(.*)": "<rootDir>/libs/email/src/$1",
       "@libs/email": "<rootDir>/libs/email/src",
       "@libs/alioss/(.*)": "<rootDir>/libs/alioss/src/$1",
-      "@libs/alioss": "<rootDir>/libs/alioss/src"
+      "@libs/alioss": "<rootDir>/libs/alioss/src",
+      "@libs/alisms/(.*)": "<rootDir>/libs/alisms/src/$1",
+      "@libs/alisms": "<rootDir>/libs/alisms/src"
     }
   }
 }

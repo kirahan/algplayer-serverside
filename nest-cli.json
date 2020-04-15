@@ -61,6 +61,15 @@
       "compilerOptions": {
         "tsConfigPath": "libs/alioss/tsconfig.lib.json"
       }
+    },
+    "alisms": {
+      "type": "library",
+      "root": "libs/alisms",
+      "entryFile": "index",
+      "sourceRoot": "libs/alisms/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/alisms/tsconfig.lib.json"
+      }
     }
   }
 }
