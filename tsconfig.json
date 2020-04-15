@@ -28,6 +28,12 @@
       ],
       "@libs/email/*": [
         "libs/email/src/*"
+      ],
+      "@libs/alioss": [
+        "libs/alioss/src"
+      ],
+      "@libs/alioss/*": [
+        "libs/alioss/src/*"
       ]
     }
   },

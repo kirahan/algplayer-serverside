@@ -5,6 +5,7 @@ import { LocalStrategy } from './local.strategy';
 import { JwtStrategy } from './jwt.strategy';
 import { JwtModule } from '@nestjs/jwt';
 import { EmailModule, EmailService } from '@libs/email';
+import { AliossService, AliossModule } from '@libs/alioss';
 
 @Global()
 @Module({
@@ -15,7 +16,7 @@ import { EmailModule, EmailService } from '@libs/email';
     })
   ],
   controllers: [AuthController],
-  providers: [LocalStrategy,JwtStrategy,JwtModule,EmailService],
+  providers: [LocalStrategy,JwtStrategy,JwtModule,EmailService,AliossService],
   exports: [JwtModule]
 })
 export class AuthModule {}

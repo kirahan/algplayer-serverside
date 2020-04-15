@@ -52,6 +52,15 @@
       "compilerOptions": {
         "tsConfigPath": "libs/email/tsconfig.lib.json"
       }
+    },
+    "alioss": {
+      "type": "library",
+      "root": "libs/alioss",
+      "entryFile": "index",
+      "sourceRoot": "libs/alioss/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/alioss/tsconfig.lib.json"
+      }
     }
   }
 }

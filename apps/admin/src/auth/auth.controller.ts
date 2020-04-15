@@ -11,6 +11,7 @@ import { CurrentUser } from './currentuser.decorator';
 import { RolesGuard } from '../guards/roles.guard';
 import { Roles } from '../guards/roles.decorator';
 import { EmailService } from '@libs/email';
+import { AliossService } from '@libs/alioss';
 @ApiTags('注册和登录')
 @Roles('admin','superadmin')
 @Controller('auth')
@@ -20,6 +21,7 @@ export class AuthController {
   constructor(
     private jwtService: JwtService,
     private emailService: EmailService,
+    private ossService: AliossService,
     @InjectModel(User) private userModel: ReturnModelType<typeof User>,
   ) {}
 

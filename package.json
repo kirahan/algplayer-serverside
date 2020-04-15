@@ -29,7 +29,9 @@
     "@nestjs/platform-express": "^7.0.0",
     "@nestjs/swagger": "^4.5.1",
     "@typegoose/typegoose": "^6.4.0",
+    "@types/ali-oss": "^6.0.5",
     "@types/mongoose": "^5.7.10",
+    "ali-oss": "^6.6.0",
     "bcryptjs": "^2.4.3",
     "class-transformer": "^0.2.3",
     "class-validator": "^0.11.1",
@@ -96,7 +98,9 @@
       "@libs/common/(.*)": "<rootDir>/libs/common/src/$1",
       "@libs/common": "<rootDir>/libs/common/src",
       "@libs/email/(.*)": "<rootDir>/libs/email/src/$1",
-      "@libs/email": "<rootDir>/libs/email/src"
+      "@libs/email": "<rootDir>/libs/email/src",
+      "@libs/alioss/(.*)": "<rootDir>/libs/alioss/src/$1",
+      "@libs/alioss": "<rootDir>/libs/alioss/src"
     }
   }
 }
