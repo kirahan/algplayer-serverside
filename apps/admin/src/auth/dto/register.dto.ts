@@ -1,12 +1,5 @@
-import { ApiProperty, ApiQuery } from "@nestjs/swagger";
+import { ApiProperty } from "@nestjs/swagger";
 
-enum Roles{
-  normal = 1,
-  admin,
-  superadmin,
-  guest,
-  blocked
-}
 
 
 export class RegisterDto {

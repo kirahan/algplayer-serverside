@@ -9,8 +9,8 @@ async function bootstrap() {
 
   const options = new DocumentBuilder()
     .addBearerAuth()  //启用bearer token功能，就能在页面中输入token
-    .setTitle('CubeNode服务端后台API')
-    .setDescription('CubeNodeLTD API description')
+    .setTitle('CubeNode管理员端口后台API')
+    .setDescription('几乎所有的接口都需要登录')
     .setVersion('1.0')
     .addTag('目录')
     .build();

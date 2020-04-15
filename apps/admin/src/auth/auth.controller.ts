@@ -1,7 +1,7 @@
 import { Controller, Post, Body, Get, UseGuards, Req, Query } from '@nestjs/common';
-import { ApiTags, ApiOperation, ApiProperty, ApiBearerAuth, ApiQuery } from '@nestjs/swagger';
+import { ApiTags, ApiOperation, ApiBearerAuth, ApiQuery } from '@nestjs/swagger';
 import { InjectModel } from 'nestjs-typegoose';
-import { User } from '@libs/db/models/user.model';
+import { User, UserRole } from '@libs/db/models/user.model';
 import { ReturnModelType , DocumentType} from '@typegoose/typegoose';
 import { AuthGuard } from '@nestjs/passport';
 import { RegisterDto } from './dto/register.dto';
@@ -11,8 +11,8 @@ import { CurrentUser } from './currentuser.decorator';
 import { RolesGuard } from '../guards/roles.guard';
 import { Roles } from '../guards/roles.decorator';
 
-@ApiTags('用户')
-// @Roles('admin')
+@ApiTags('注册和登录')
+@Roles('admin','superadmin')
 @Controller('auth')
 export class AuthController {
   //
@@ -24,7 +24,7 @@ export class AuthController {
 
   @Post('register')
   @Roles('superadmin')  //允许使用接口的用户类型
-  @ApiQuery({name:'role',required:true,description:'角色类型',enum:['normal','admin','superadmin','guest','banned']})
+  @ApiQuery({name:'role',required:true,description:'角色类型',enum: UserRole})
   @ApiOperation({ summary: '注册' })
   async register(@Body() dto: RegisterDto, @Query() query) {
     const { username, password } = dto;
@@ -39,7 +39,6 @@ export class AuthController {
   }
 
   @Post('login')
-  @Roles('admin','superadmin')
   @ApiOperation({ summary: '登录' })
   @UseGuards(AuthGuard('local'),RolesGuard)
   async login(@Body() dto: LoginDto, @CurrentUser() user: DocumentType<User>) {
@@ -48,8 +47,10 @@ export class AuthController {
     };
   }
 
+
+
   @Get('user')
-  @ApiOperation({ summary: '个人信息' })
+  @ApiOperation({ summary: '用户' })
   @UseGuards(AuthGuard('jwt'))  //守卫
   @ApiBearerAuth() //文档中可以输入token
   async user(@CurrentUser() user: DocumentType<User>) {

@@ -12,7 +12,8 @@ export class RolesGuard implements CanActivate {
     context: ExecutionContext,
   ): boolean | Promise<boolean> | Observable<boolean> {
     console.log('inin roles')
-    const roles = this.reflector.get<string[]>('roles',context.getHandler())
+    const roles = this.reflector.getAllAndOverride<string[]>('roles',
+    [context.getHandler(),context.getClass()])
     // 当设置的roles在controller级的时候用 getClass 而不是 getHandler
     // const roles = this.reflector.get<string[]>('roles',context.getClass())   
     const req = context.switchToHttp().getRequest()

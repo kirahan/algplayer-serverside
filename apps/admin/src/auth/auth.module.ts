@@ -1,10 +1,11 @@
-import { Module } from '@nestjs/common';
+import { Module, Global } from '@nestjs/common';
 import { AuthController } from './auth.controller';
 import { PassportModule } from '@nestjs/passport';
 import { LocalStrategy } from './local.strategy';
 import { JwtStrategy } from './jwt.strategy';
 import { JwtModule } from '@nestjs/jwt';
 
+@Global()
 @Module({
   imports: [
     PassportModule,
@@ -13,6 +14,7 @@ import { JwtModule } from '@nestjs/jwt';
     })
   ],
   controllers: [AuthController],
-  providers: [LocalStrategy,JwtStrategy,JwtModule]
+  providers: [LocalStrategy,JwtStrategy,JwtModule],
+  exports: [JwtModule]
 })
 export class AuthModule {}
