@@ -10,7 +10,7 @@ import { JwtService } from '@nestjs/jwt';
 import { CurrentUser } from './currentuser.decorator';
 import { RolesGuard } from '../guards/roles.guard';
 import { Roles } from '../guards/roles.decorator';
-
+import { EmailService } from '@libs/email';
 @ApiTags('注册和登录')
 @Roles('admin','superadmin')
 @Controller('auth')
@@ -19,11 +19,14 @@ export class AuthController {
   // 注入模型
   constructor(
     private jwtService: JwtService,
+    private emailService: EmailService,
     @InjectModel(User) private userModel: ReturnModelType<typeof User>,
   ) {}
 
   @Post('register')
+  @UseGuards(AuthGuard('jwt'))  //守卫
   @Roles('superadmin')  //允许使用接口的用户类型
+  @ApiBearerAuth() //文档中可以输入token
   @ApiQuery({name:'role',required:true,description:'角色类型',enum: UserRole})
   @ApiOperation({ summary: '注册' })
   async register(@Body() dto: RegisterDto, @Query() query) {
@@ -35,6 +38,9 @@ export class AuthController {
       password,
       role
     });
+    this.emailService.sendCode({
+      to:'478222961@qq.com'
+    },'122345')
     return user;
   }
 

@@ -22,6 +22,12 @@
       ],
       "@libs/common/*": [
         "libs/common/src/*"
+      ],
+      "@libs/email": [
+        "libs/email/src"
+      ],
+      "@libs/email/*": [
+        "libs/email/src/*"
       ]
     }
   },
