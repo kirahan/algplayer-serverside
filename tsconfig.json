@@ -40,6 +40,12 @@
       ],
       "@libs/alisms/*": [
         "libs/alisms/src/*"
+      ],
+      "@libs/logging": [
+        "libs/logging/src"
+      ],
+      "@libs/logging/*": [
+        "libs/logging/src/*"
       ]
     }
   },

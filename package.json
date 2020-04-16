@@ -103,7 +103,9 @@
       "@libs/alioss/(.*)": "<rootDir>/libs/alioss/src/$1",
       "@libs/alioss": "<rootDir>/libs/alioss/src",
       "@libs/alisms/(.*)": "<rootDir>/libs/alisms/src/$1",
-      "@libs/alisms": "<rootDir>/libs/alisms/src"
+      "@libs/alisms": "<rootDir>/libs/alisms/src",
+      "@libs/logging/(.*)": "<rootDir>/libs/logging/src/$1",
+      "@libs/logging": "<rootDir>/libs/logging/src"
     }
   }
 }

@@ -1,14 +1,27 @@
 // 配置公共模块
-// 装载环境变量
-// 装载数据库
 
-
-import { Module } from '@nestjs/common';
+import { Module, Global } from '@nestjs/common';
 import { CommonService } from './common.service';
-import { ConfigModule } from '@nestjs/config'
-import { DbModule } from '@libs/db';
-// import { JwtModule} from '@nestjs/jwt'
 
+// 环境变量
+import { ConfigModule } from '@nestjs/config'
+
+// 数据库
+import { DbModule, DbService } from '@libs/db';
+
+//邮件服务 
+import { EmailService } from '@libs/email';
+
+// 短信服务
+import { AlismsService } from '@libs/alisms';
+
+// 文件上传服务
+import { AliossService } from '@libs/alioss';
+
+
+const services = [CommonService,DbService,EmailService,AlismsService,AliossService]
+
+@Global()
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -23,9 +36,8 @@ import { DbModule } from '@libs/db';
     // }),
     DbModule
   ],
-  providers: [CommonService],
-  exports: [CommonService,
+  providers: services,
+  exports: services,
     // JwtModule
-  ],
 })
 export class CommonModule {}
