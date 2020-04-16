@@ -19,7 +19,7 @@ const PORT = process.env.ADMIN_PORT || 3001
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule,{
-    logger: true
+    // logger: true
   });
   // 开启跨域
   app.enableCors()

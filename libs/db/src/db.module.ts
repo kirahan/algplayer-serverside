@@ -6,10 +6,11 @@ import { Puzzle } from './models/puzzle.model';
 import { Puzzleset } from './models/puzzleset.model';
 import { Casegroup } from './models/casegroup.model';
 import { Algcase } from './models/algcase.model';
+import { Comment } from './models/comment.model';
 
 
 // 引入各种模型
-const models = TypegooseModule.forFeature([User,Puzzle,Puzzleset,Casegroup,Algcase])
+const models = TypegooseModule.forFeature([User,Puzzle,Puzzleset,Casegroup,Algcase,Comment])
 
 @Global()
 @Module({
